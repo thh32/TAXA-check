@@ -14,7 +14,7 @@ TAXA-check provides information for a name using both of these codes, letting yo
 
 
 ## Installation guidance
-1. Download the zip file here; [Download TAXA-check](https://github.com/thh32/TAXA-checkAXA-check-v1.zip)
+1. Download the zip file here; [Download TAXA-check](https://github.com/thh32/TAXA-check/TAXA-check-v1.zip)
 2. Unzip the package
 3. On Chrome, click on 'Manage Extensions'
 4. Enable Developer mode
