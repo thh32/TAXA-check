@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "database_version": "2026.09.18",
+  "created_at": "2026-09-18T07:23:41.112141+00:00",
+  "names_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/names.json",
+  "epithets_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/epithets.json",
+  "metadata_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/metadata.json",
+  "names_sha256": "d52262c7fbb6b25e22bf5dcd112ef15511a56a8fbbf1600582b879f1731fd349",
+  "epithets_sha256": "37be0dcc7c8d11251e1cdb3ffa397cc41c350b56672d2a4ad8f3ad0342046796",
+  "metadata_sha256": "1ae3fe9f63f8dad3edf6905ca3951a799e0573e5e5ad5dccdf5f1e6f42a35238",
+  "written_names": 49302,
+  "epithet_entries": 15768
+}

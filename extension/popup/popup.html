@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+<header>
+  <img src="../icons/icon48.png" alt="TAXA-check">
+  <div><h1>TAXA-check</h1><p>Prokaryotic names, clarified.</p></div>
+</header>
+<main>
+  <div class="status">Scanning is active</div>
+  <div id="controls"></div>
+  <section class="update-card">
+    <h2>Database update</h2>
+    <div class="update-grid">
+      <span>Installed</span><strong id="db-version">Checking...</strong>
+      <span>Last checked</span><span id="db-checked">Never</span>
+    </div>
+    <div class="update-actions">
+      <button id="db-update" type="button">Check for updates</button>
+      <button id="db-restore" class="secondary" type="button" hidden>Use bundled database</button>
+    </div>
+    <p id="db-message" class="update-message" aria-live="polite"></p>
+  </section>
+  <h2>Legend</h2>
+  <p><b class="blue">Blue</b> LPSN current<br><b class="teal">Teal</b> SeqCode current<br><b class="purple">Purple</b> Both codes<br><b class="orange">Orange</b> Superseded<br><b class="yellow">Yellow</b> Conflict or ambiguity</p>
+  <small id="m">Loading database summary...</small>
+  <footer class="attribution">
+    <div>Developed and maintained by Thomas C. A. Hitch</div>
+    <img src="../icons/cuhk-medicine.png" alt="CU Medicine" onerror="this.hidden=true">
+  </footer>
+</main>
+<script src="popup.js"></script>
+</body>
+</html>
