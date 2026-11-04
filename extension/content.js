@@ -4,7 +4,7 @@
  */
 (()=>{'use strict';
 const STORAGE_KEY='taxacheckHighlightAllLoRN';
-const BLOCKED=new Set(['species','sp','spp','genus','genera','family','families','order','class','phylum','domain','bacterium','bacteria','archaeon','archaea','organism','microorganism','microbe','strain','isolate','uncultured','unclassified','unknown','candidate','candidatus']);
+const BLOCKED=new Set(['not','assigned','species','sp','spp','genus','genera','family','families','order','class','phylum','domain','bacterium','bacteria','archaeon','archaea','organism','microorganism','microbe','strain','isolate','uncultured','unclassified','unknown','candidate','candidatus']);
 const COMMON_FIRST_WORDS=new Set([
 'a','an','the','and','or','but','nor','so','yet',
 'as','at','by','for','from','in','into','of','on','onto','to','upon','via','with','without',
