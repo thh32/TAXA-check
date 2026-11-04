@@ -163,11 +163,13 @@ def main() -> None:
     require_output(LPSN_NORMALIZED)
     require_output(SEQCODE_NORMALIZED)
 
-    run("9. Merge sources and compile extension indexes", "merge_compile.py")
+    run("9a. Merge sources and compile extension indexes", "merge_compile.py")
     require_output("extension/generated/names.json")
     require_output("extension/generated/epithets.json")
     require_output("extension/generated/metadata.json")
-
+    
+    run("9b. Sanitize compiled names and rebuild the epithet index", "sanitize_compiled_database.py",)
+    
     run(
         "10. Remove redundant same-spelling redirects",
         "deduplicate_identical_name_redirects.py",
