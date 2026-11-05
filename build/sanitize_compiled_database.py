@@ -101,6 +101,7 @@ def main() -> None:
             continue
 
         parts = key.split()
+
         if len(parts) < 2:
             continue
 
@@ -110,10 +111,15 @@ def main() -> None:
             parts[1].casefold(),
         )
 
-        if not epithet or epithet in BLOCKED_EPITHETS:
+        if (
+            not epithet
+            or epithet in BLOCKED_EPITHETS
+        ):
             continue
 
-        if key not in epithetsepithets[epithet].append(key)
+        if key not in epithets[epithet]:
+            epithets[epithet].append(key)
+
 
     cleaned_epithets = {
         epithet: sorted(values)

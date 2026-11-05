@@ -1,9 +1,9 @@
 {
-  "written_names": 49302,
-  "lpsn_records": 36258,
-  "seqcode_records": 48406,
-  "superseded_records": 6879,
-  "unresolved_superseded_records": 106,
-  "database_version": "2026.09.18",
-  "database_published_at": "2026-09-18T07:23:41.112141+00:00"
+  "written_names": 49471,
+  "lpsn_records": 21396,
+  "seqcode_records": 48461,
+  "superseded_records": 4708,
+  "unresolved_superseded_records": 108,
+  "database_version": "2026.11.04",
+  "database_published_at": "2026-11-05T01:41:42.372812+00:00"
 }

@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "database_version": "2026.09.18",
-  "created_at": "2026-09-18T07:23:41.112141+00:00",
+  "database_version": "2026.11.04",
+  "created_at": "2026-11-05T01:41:42.372812+00:00",
   "names_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/names.json",
   "epithets_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/epithets.json",
   "metadata_url": "https://raw.githubusercontent.com/thh32/TAXA-check/main/database/metadata.json",
-  "names_sha256": "d52262c7fbb6b25e22bf5dcd112ef15511a56a8fbbf1600582b879f1731fd349",
-  "epithets_sha256": "37be0dcc7c8d11251e1cdb3ffa397cc41c350b56672d2a4ad8f3ad0342046796",
-  "metadata_sha256": "1ae3fe9f63f8dad3edf6905ca3951a799e0573e5e5ad5dccdf5f1e6f42a35238",
-  "written_names": 49302,
-  "epithet_entries": 15768
+  "names_sha256": "09406ea98590f72ba04cfedfb8258e29b148f0a6f87cddbe6af94842dec03329",
+  "epithets_sha256": "37f57ea0b9db0141c0222930f9b99ffd1f65936c6f6735f0796f3b58e6fe6d28",
+  "metadata_sha256": "1e4a4aca9a4d59ce4988cbc8b4c900f7b337fda25d23ea042634f60233725657",
+  "written_names": 49471,
+  "epithet_entries": 15690
 }

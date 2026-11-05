@@ -69,7 +69,8 @@ def text(value: Any) -> str:
     return str(value or "").strip()
 
 
-def candidate_values(record: dict[str, Any]) -> listvalues = [
+def candidate_values(record: dict[str, Any]) -> list[str]:
+    values = [
         record.get("name"),
         record.get("display_name"),
         record.get("full_name"),
@@ -78,6 +79,7 @@ def candidate_values(record: dict[str, Any]) -> listvalues = [
     ]
 
     raw = record.get("raw")
+
     if isinstance(raw, dict):
         values.extend(
             [
@@ -89,7 +91,11 @@ def candidate_values(record: dict[str, Any]) -> listvalues = [
             ]
         )
 
-    return [text(value) for value in values if text(value)]
+    return [
+        text(value)
+        for value in values
+        if text(value)
+    ]
 
 
 def placeholder_reason(record: dict[str, Any]) -> str | None:
