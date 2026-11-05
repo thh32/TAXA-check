@@ -1,9 +1,14 @@
 {
   "manifest_version": 3,
   "name": "TAXA-check",
-  "version": "2.3.0",
+  "version": "2.3.2",
   "description": "Highlights prokaryotic names and summarizes LPSN and SeqCode histories.",
-  "permissions": ["storage", "unlimitedStorage"],
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "tabs",
+    "webNavigation"
+  ],
   "host_permissions": [
     "<all_urls>",
     "https://raw.githubusercontent.com/thh32/TAXA-check/*"
@@ -13,9 +18,17 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*", "file://*/*"],
-      "js": ["content.js"],
-      "css": ["styles.css"],
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
       "run_at": "document_idle",
       "all_frames": true,
       "match_origin_as_fallback": true
@@ -38,8 +51,12 @@
   },
   "web_accessible_resources": [
     {
-      "resources": ["generated/*"],
-      "matches": ["<all_urls>"]
+      "resources": [
+        "generated/*"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ]
 }

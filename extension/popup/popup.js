@@ -2,7 +2,40 @@
 const LORN_KEY='taxacheckHighlightAllLoRN',SCANNING_KEY='taxacheckScanningEnabled';
 const controls=document.getElementById('controls'),statusBox=document.querySelector('.status');
 function makeToggle(id,title,description,lorn=false){const card=document.createElement('section');card.className='control-card'+(lorn?' lorn':'');card.innerHTML=`<div class="control-row"><div class="control-copy"><b>${lorn?'<span class="swatch"></span>':''}${title}</b><small>${description}</small></div><label class="switch"><input id="${id}" type="checkbox"><span class="slider"></span></label></div>`;return card;}
-async function initControls(){controls.className='controls';const scan=makeToggle('scan-toggle','Enable TAXA-check scanning','Turn taxonomic name detection and hover information on or off.');const lorn=makeToggle('lorn-toggle','Highlight all LoRN names','Show LoRN-associated names in highlighter green.',true);controls.append(scan,lorn);const scanInput=scan.querySelector('input'),lornInput=lorn.querySelector('input');const stored=await chrome.storage.local.get({[SCANNING_KEY]:true,[LORN_KEY]:false});scanInput.checked=stored[SCANNING_KEY]!==false;lornInput.checked=Boolean(stored[LORN_KEY]);lornInput.disabled=!scanInput.checked;statusBox.textContent=scanInput.checked?'Scanning is active':'Scanning is paused';scanInput.addEventListener('change',async()=>{await chrome.storage.local.set({[SCANNING_KEY]:scanInput.checked});lornInput.disabled=!scanInput.checked;statusBox.textContent=scanInput.checked?'Scanning is active':'Scanning is paused';});lornInput.addEventListener('change',()=>chrome.storage.local.set({[LORN_KEY]:lornInput.checked}));}
+async function sendScanningState(enabled){
+  const tabs=await chrome.tabs.query({active:true,currentWindow:true});
+  const tab=tabs[0];
+  if(!tab?.id)return;
+  try{
+    const frames=await chrome.webNavigation.getAllFrames({tabId:tab.id});
+    await Promise.allSettled((frames||[{frameId:0}]).map(frame=>
+      chrome.tabs.sendMessage(tab.id,{type:'taxacheck-set-scanning',enabled},{frameId:frame.frameId})
+    ));
+  }catch(_error){
+    try{await chrome.tabs.sendMessage(tab.id,{type:'taxacheck-set-scanning',enabled});}catch(_ignored){}
+  }
+}
+async function initControls(){
+  controls.className='controls';
+  const scan=makeToggle('scan-toggle','Enable TAXA-check scanning','Turn taxonomic name detection and hover information on or off.');
+  const lorn=makeToggle('lorn-toggle','Highlight all LoRN names','Show LoRN-associated names in highlighter green.',true);
+  controls.append(scan,lorn);
+  const scanInput=scan.querySelector('input'),lornInput=lorn.querySelector('input');
+  const stored=await chrome.storage.local.get({[SCANNING_KEY]:true,[LORN_KEY]:false});
+  scanInput.checked=stored[SCANNING_KEY]!==false;
+  lornInput.checked=Boolean(stored[LORN_KEY]);
+  lornInput.disabled=!scanInput.checked;
+  statusBox.textContent=scanInput.checked?'Scanning is active':'Scanning is paused';
+  scanInput.addEventListener('change',async()=>{
+    const enabled=scanInput.checked;
+    await chrome.storage.local.set({[SCANNING_KEY]:enabled});
+    lornInput.disabled=!enabled;
+    statusBox.textContent=enabled?'Scanning is active':'Scanning is paused';
+    await sendScanningState(enabled);
+  });
+  lornInput.addEventListener('change',()=>chrome.storage.local.set({[LORN_KEY]:lornInput.checked}));
+}
+
 function request(type,extra={}){return new Promise((resolve,reject)=>chrome.runtime.sendMessage({type,...extra},response=>{if(chrome.runtime.lastError)return reject(new Error(chrome.runtime.lastError.message));if(!response?.ok)return reject(new Error(response?.error||'Update request failed.'));resolve(response.result);}));}
 function formatDate(value){if(!value)return'Never';const date=new Date(value);return Number.isNaN(date.valueOf())?value:date.toLocaleString();}
 const updateButton=document.getElementById('db-update'),restoreButton=document.getElementById('db-restore'),message=document.getElementById('db-message'),version=document.getElementById('db-version'),checked=document.getElementById('db-checked');
