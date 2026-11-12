@@ -5,6 +5,9 @@ TAXA-check: a browser extension for navigating changing prokaryotic nomenclature
 
 TAXA-check highlights prokaryotic names in your web browser, providing information if a name has been reclassified or another name is recommended for medical use (present on the 'List of Recommended Names for bacteria of medical importance' (LoRN)).
 
+![til](./LPSN-example.gif)
+
+
 ## Understanding the different nomenclature codes
 Currently there are two codes for naming (nomenclature) of prokaryotes;
 - International code on the nomenclature of Prokaryotes (ICNP) is culture dependant (type material is a cultured isolate which is deposited in two culture collections)
